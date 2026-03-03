@@ -1,9 +1,12 @@
 
+
 function App() {
 
   return (
 
-      <h1 className="text-4xl font-bold">Hello World</h1>
+      <div className="flex  flex-col bg-red-50 h-screen">
+
+      </div>
   )
 }
 
