@@ -10,17 +10,34 @@
  * 4. Pass callbacks down to TaskCard
  */
 
-import { TaskCard } from './TaskCard'
-import type { Task } from '../types'
+
+import { TaskCard } from '@/features/tasks/components/TaskCard'
+import type { Task } from '@/features/tasks/types'
 
 type Props = {
-  // Your code here
+  tasks: Task[];
+  onComplete: (id: number) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number) => void;
 }
 
-export function TaskList({ }: Props) {
+export function TaskList({tasks, onComplete, onDelete, onEdit}: Props) {
+  
   return (
-    <div>
-      {/* Your code here */}
+    <div className='flex flex-col gap-3 p-4'>
+      {tasks.length > 0 ? (
+        tasks.map((task) => (
+          <TaskCard 
+           key={task.id}
+           task={task}
+           onComplete={onComplete}
+           onDelete={onDelete}
+           onEdit={onEdit}
+          />
+        ))
+      ) : (
+        <p>No tasks found.</p>
+      )}
     </div>
   )
 }
