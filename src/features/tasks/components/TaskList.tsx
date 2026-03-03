@@ -1,13 +1,36 @@
 /**
- * DRILL 3: TaskList Component
+ * DRILL #3: TaskList Component ✓ (Completed)
  *
  * Display a list of tasks using TaskCard.
  *
- * TODO:
- * 1. Create Props type with: tasks array and callbacks (onComplete, onDelete, onEdit)
- * 2. Map over tasks and render TaskCard for each
- * 3. Add empty state message when tasks array is empty
- * 4. Pass callbacks down to TaskCard
+ * What you learned:
+ * - Props composition
+ * - Array mapping in JSX
+ * - Empty state handling
+ *
+ * ---
+ *
+ * DRILL #5: Local State Management (Update this component)
+ *
+ * Update TaskList to work with App state management.
+ *
+ * Tasks:
+ * 1. Update Props type to accept:
+ *    - tasks: Task[]
+ *    - onDelete: (id: string) => void
+ *    - onEdit: (task: Task) => void
+ *    - onComplete?: (id: string) => void
+ * 2. Update TaskCard props passed to match new signature:
+ *    - Pass onDelete with task.id
+ *    - Pass onEdit with full task
+ *    - Pass onComplete if defined
+ * 3. Keep empty state message
+ * 4. Add result counter: "Showing X tasks"
+ *
+ * Hints:
+ * - TaskCard will need the updated callbacks
+ * - Use consistent ID types (string)
+ * - The component receives state from App, so focus on passing it through correctly
  */
 
 

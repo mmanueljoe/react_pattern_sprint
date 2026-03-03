@@ -1,21 +1,36 @@
 /**
- * DRILL 4: TaskForm Component
+ * DRILL #4: TaskForm Component ✓ (Completed)
  *
  * Form to create/edit tasks.
  *
- * TODO:
- * 1. Create Props type with onSubmit callback
- * 2. Use useState for inputs: title, description
- * 3. Handle form submission:
- *    - Validate inputs (at least title is required)
- *    - Call onSubmit with { title, description }
- *    - Clear form after submission
- * 4. Add input fields for title and description
- * 5. Style with Tailwind CSS
+ * What you learned:
+ * - Form state management
+ * - Input handling and validation
+ * - Conditional rendering for errors
+ * - Creating vs editing modes
  *
- * BONUS:
- * - Accept optional initialTask prop to prefill form (for editing)
- * - Disable submit button while submitting
+ * ---
+ *
+ * DRILL #5: Local State Management (Update this component)
+ *
+ * Integrate TaskForm with App state management.
+ *
+ * Tasks:
+ * 1. Keep the existing form implementation working
+ * 2. Update behavior:
+ *    - When initialTask is provided (edit mode), pre-fill form and change button text to "Update"
+ *    - When no initialTask (create mode), button says "Add"
+ * 3. After successful submit:
+ *    - Clear the form only when creating
+ *    - When editing, either keep form filled or clear it (check your preference)
+ * 4. The form should pass task data to App via onSubmit callback
+ * 5. Make sure validation still works correctly
+ *
+ * Hints:
+ * - Use useEffect to populate form when initialTask changes
+ * - Button text changes: initialTask ? "Update" : "Add"
+ * - Form should reset after creation but not after edit (or clear after edit if you prefer)
+ * - Keep all the validation logic you have
  */
 
 import { useState } from 'react'

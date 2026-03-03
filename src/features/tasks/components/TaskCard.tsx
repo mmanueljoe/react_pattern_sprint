@@ -1,14 +1,33 @@
 /**
- * DRILL 2: TaskCard Component
+ * DRILL #2: TaskCard Component ✓ (Completed)
  *
  * Display a single task with buttons for actions.
  *
- * TODO:
- * 1. Create Props type with: task, onComplete, onDelete, onEdit (all callbacks)
- * 2. Display: title, description, completion status
- * 3. Add buttons for: Complete, Edit, Delete
- * 4. Use Tailwind CSS for styling (card layout, spacing, colors)
- * 5. Handle the completed state visually (e.g., strikethrough text if completed)
+ * What you learned:
+ * - Component props and callbacks
+ * - Conditional rendering
+ * - Tailwind CSS styling
+ *
+ * ---
+ *
+ * DRILL #5: Local State Management (Update this component)
+ *
+ * Update TaskCard to work with App state management.
+ *
+ * Tasks:
+ * 1. Update Props to accept:
+ *    - task: Task
+ *    - onDelete: (id: string) => void (use string, not number)
+ *    - onEdit: (task: Task) => void (pass full task, not just ID)
+ *    - onComplete?: (id: string) => void
+ * 2. Update button handlers to call these callbacks
+ * 3. The edit button should pass the full task object
+ * 4. Update ID type from number to string (tasks use string IDs)
+ *
+ * Hints:
+ * - Type IDs consistently (string not number)
+ * - Pass data needed by parent (task object for edit, just ID for delete)
+ * - Keep component "dumb" - it shouldn't know how to manage state
  */
 
 import type { Task } from "@/features/tasks/types";
@@ -20,7 +39,7 @@ type Props = {
   onEdit: (id: number) => void;
 };
 
-export function TaskCard({ task, onComplete, onDelete, onEdit }: Props) {
+export function TaskCard({ task, onComplete, onDelete, onEdit }: Readonly<Props>) {
   return (
     <div className="flex flex-col gap-2 p-4 bg-white border border-gray-200 rounded shadow">
       <p className={task.completed ? "line-through opacity-50" : ""}>
