@@ -21,7 +21,7 @@ type Props = {
   onEdit: (id: number) => void;
 }
 
-export function TaskList({tasks, onComplete, onDelete, onEdit}: Props) {
+export function TaskList({tasks, onComplete, onDelete, onEdit}: Readonly<Props>) {
   
   return (
     <div className='flex flex-col gap-3 p-4'>
