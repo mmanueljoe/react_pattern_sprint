@@ -22,19 +22,79 @@ import { useState } from 'react'
 import type { CreateTaskDTO, Task } from '../types'
 
 type Props = {
-  // Your code here
+  onSubmit: (task: CreateTaskDTO) => void;
+  initialTask?: Task;
 }
 
-export function TaskForm({ }: Props) {
-  // Your code here
+type FormError = {
+  title?: string;
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // Your code here
+export function TaskForm({ onSubmit, initialTask }: Readonly<Props>) {
+  const [title, setTitle] = useState(initialTask?.title || '');
+  const [description, setDescription] = useState(initialTask?.description || '');
+  const [priority, setPriority] = useState<'high' | 'medium' | 'low'>('high');
+  const [errors, setErrors] = useState<FormError | null>({});
+
+
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+
+    // validate input
+    if(title.trim() === ''){
+      setErrors( { title: 'Title is required'})
+    }else {
+      setErrors({})
+
+    }
+
+    const newTodo: CreateTaskDTO = {
+      title,
+      description,
+      priority: priority
+    }
+
+    onSubmit(newTodo);
+    setTitle('');
+    setDescription('');
+
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* Your code here */}
+      <select name="priority" id="priority" value={priority} onChange={(e) => setPriority(e.target.value as "high" | "medium" | "low")}>
+        <option value="">Select Priority</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <label htmlFor='title'>Task Title</label>
+      <input
+      id='title'
+      name='title' 
+      type='text'
+      placeholder='Enter task title'
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      className='border p-2 rounded w-full'
+      />
+      {errors?.title ? <p className='text-red-500'>{errors?.title}</p> : null}
+      <label htmlFor='description'>Task Description</label>
+      <textarea
+      id='description'
+      name='description'
+      className='border p-2 rounded w-full'
+      rows={3} 
+      value={description} 
+      onChange={(e) => setDescription(e.target.value)}
+      placeholder='Add details (optional)'
+      >
+      </textarea>
+
+      <button type='submit'>
+        Add
+      </button>
     </form>
   )
 }
