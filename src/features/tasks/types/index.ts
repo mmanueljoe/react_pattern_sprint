@@ -10,13 +10,23 @@
  */
 
 export type Task = {
-  // Your code here
+  id: number;
+  title: string;
+  description?: string;
+  completed: boolean;
+  createdAt: Date;
+  priority?: "high" | "medium" | "low";
 }
 
 export type CreateTaskDTO = {
-  // Your code here
+   title: string;
+   description?: string;
+   priority?: "high" | "medium" | "low";
 }
 
 export type UpdateTaskDTO = {
-  // Your code here
+  title?: string;
+  description?: string;
+  completed?: boolean;
+  priority?: "high" | "medium" | "low";
 }
